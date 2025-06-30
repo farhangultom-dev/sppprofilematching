@@ -1,5 +1,6 @@
-package com.diprojectin.sppprofilematching.ui.admin
+package com.diprojectin.sppprofilematching.ui.admin.kelas
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -15,6 +16,7 @@ import com.diprojectin.network.ApiInterface
 import com.diprojectin.sppprofilematching.R
 import com.diprojectin.sppprofilematching.databinding.ActivityMasterKelasBinding
 import com.diprojectin.sppprofilematching.ui.adapters.KelasAdapter
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,9 +52,19 @@ class MasterKelasActivity : AppCompatActivity() {
             }
 
             adapter = KelasAdapter(this@MasterKelasActivity, mutableListOf(), mutableListOf(), object : KelasAdapter.OnItemClickListener {
-                override fun onItemClick(item: Kelas) {}
+                override fun onItemClick(item: Kelas) {
+                    val intent = Intent(this@MasterKelasActivity, DetailKelasActivity::class.java)
+                    intent.putExtra("listKelas", Gson().toJson(listKelas.filter { it.grade == item.grade }))
+                    intent.putExtra("kelas", item.grade)
+                    startActivity(intent)
+                }
 
             })
+
+            btnTambah.setOnClickListener {
+                val intent = Intent(this@MasterKelasActivity, AddKelasActivity::class.java)
+                startActivity(intent)
+            }
         }
 
     }
@@ -86,13 +98,22 @@ class MasterKelasActivity : AppCompatActivity() {
                         listKelas = response.body()?.data!!
                         kelasCount = response.body()?.dataCount!!
 
-                        binding.tvJumlahX.text = kelasCount[0].totalSiswa.toString()
-                        binding.tvJumlahXi.text = kelasCount[1].totalSiswa.toString()
-                        binding.tvJumlahXii.text = kelasCount[2].totalSiswa.toString()
+                        for (i in kelasCount){
+                            if (i.grade == "X"){
+                                binding.tvJumlahX.text = i.totalSiswa.toString()
+                                binding.tvJumlahGenderX.text = "${i.jumlahWanita} (P) / ${i.jumlahPria} (L)"
+                            }
 
-                        binding.tvJumlahGenderX.text = "${kelasCount[0].jumlahWanita} (P) / ${kelasCount[0].jumlahPria} (L)"
-                        binding.tvJumlahGenderXi.text = "${kelasCount[1].jumlahWanita} (P) / ${kelasCount[1].jumlahPria} (L)"
-                        binding.tvJumlahGenderXii.text = "${kelasCount[2].jumlahWanita} (P) / ${kelasCount[2].jumlahPria} (L)"
+                            if (i.grade == "XI") {
+                                binding.tvJumlahXi.text = i.totalSiswa.toString()
+                                binding.tvJumlahGenderXi.text = "${i.jumlahWanita} (P) / ${i.jumlahPria} (L)"
+                            }
+
+                            if (i.grade == "XII") {
+                                binding.tvJumlahXii.text = i.totalSiswa.toString()
+                                binding.tvJumlahGenderXii.text = "${i.jumlahWanita} (P) / ${i.jumlahPria} (L)"
+                            }
+                        }
 
                         setRecyclerView()
                     }

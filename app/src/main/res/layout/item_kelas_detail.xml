@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_grade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter"
+        android:text="Kelas"
+        android:textColor="#858585"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/et_nama_kelas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_delete_red"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_grade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_grade" />
+
+    <TextView
+        android:id="@+id/tv_nama_kelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:fontFamily="@font/inter"
+        android:text="A"
+        android:textColor="#333333"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/et_nama_kelas"
+        app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_nama_kelas"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="3dp"
+        android:background="@drawable/bg_edittext_no_padding"
+        android:fontFamily="@font/public_sans"
+        android:maxLength="1"
+        android:hint=""
+        android:inputType="textPersonName"
+        android:textColor="#374151"
+        android:textColorHint="#9CA3AF"
+        android:textSize="14sp"
+        android:text=""
+        android:visibility="invisible"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/tv_nama_kelas"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

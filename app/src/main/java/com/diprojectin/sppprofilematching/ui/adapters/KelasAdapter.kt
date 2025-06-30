@@ -52,7 +52,9 @@ class KelasAdapter(private var context: Context, private var models: MutableList
         holder.tvKelas.text = model.grade
 
         var namaKelasValue = ""
-        val namaKelas = models.filter { it.grade == model.grade }
+        val namaKelas = models
+            .filter { it.grade == model.grade }
+            .sortedBy { it.nama }
 
         for (i in namaKelas) {
             if (i.id == namaKelas.last().id){

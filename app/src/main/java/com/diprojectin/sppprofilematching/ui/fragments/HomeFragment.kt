@@ -6,10 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.diprojectin.sppprofilematching.R
 import com.diprojectin.sppprofilematching.databinding.FragmentHomeBinding
-import com.diprojectin.sppprofilematching.ui.admin.MasterKelasActivity
-import com.diprojectin.sppprofilematching.ui.admin.MasterSiswaActivity
+import com.diprojectin.sppprofilematching.ui.admin.kelas.MasterKelasActivity
+import com.diprojectin.sppprofilematching.ui.admin.siswa.MasterSiswaActivity
 import com.diprojectin.sppprofilematching.utils.SharedPrefManager
 
 class HomeFragment : Fragment() {
@@ -34,6 +33,7 @@ class HomeFragment : Fragment() {
 
     private fun initView() {
         with(binding){
+            tvName.text = prefManager.getUser()?.nama
             btnMasterSiswa.setOnClickListener {
                 val intent = Intent(requireActivity(), MasterSiswaActivity::class.java)
                 startActivity(intent)

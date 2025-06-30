@@ -13,7 +13,7 @@ import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
 object ApiClient {
-    val BASE_URL = "https://ce35-103-136-58-203.ngrok-free.app/spp-profile-matching-be/"
+    val BASE_URL = "https://f1f3-103-136-58-203.ngrok-free.app/spp-profile-matching-be/"
 
     private var retrofit: Retrofit? = null
 
@@ -41,7 +41,7 @@ object ApiClient {
             val gson = GsonBuilder().setLenient().create();
             retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
                 .build()
         }

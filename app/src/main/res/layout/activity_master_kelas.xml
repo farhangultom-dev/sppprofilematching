@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.admin.MasterKelasActivity">
+    tools:context=".ui.admin.kelas.MasterKelasActivity">
 
     <include
         android:id="@+id/appBar"
@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/inter"
-                    android:text="50 (P) / 50 (L)"
+                    android:text="0 (P) / 0 (L)"
                     android:textColor="#2F394E"
                     android:textSize="10sp" />
 
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/inter"
-                    android:text="50 (P) / 50 (L)"
+                    android:text="0 (P) / 0 (L)"
                     android:textColor="#2F394E"
                     android:textSize="10sp" />
 
@@ -154,7 +154,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/inter"
-                    android:text="50 (P) / 50 (L)"
+                    android:text="0 (P) / 0 (L)"
                     android:textColor="#2F394E"
                     android:textSize="10sp" />
 
