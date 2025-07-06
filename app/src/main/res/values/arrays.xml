@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="questions">
+        <item>2023/2024</item>
+        <item>2024/2025</item>
+        <item>2025/2026</item>
+    </string-array>
+
+    <string-array name="tahun_masuk">
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+    </string-array>
+
+    <string-array name="prestasi">
+        <item>Antar Sekolah</item>
+        <item>Antar Daerah</item>
+        <item>Nasional</item>
+        <item>Internasional</item>
+    </string-array>
+
+    <string-array name="pendapatan_orang_tua">
+        <item>&lt; Rp 2&#46;500&#46;000</item>
+        <item>Rp 3&#46;000&#46;000</item>
+        <item>Rp 3&#46;500&#46;000</item>
+        <item>&gt; Rp 3&#46;500&#46;000</item>
+    </string-array>
+
+    <string-array name="tanggungan_orang_tua">
+        <item>&lt; 2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>&gt; 4</item>
+    </string-array>
+
+    <string-array name="keterlibatan_dalam_ekskul">
+        <item>Tidak Aktif</item>
+        <item>Kurang Aktif</item>
+        <item>Aktif</item>
+        <item>Sangat Aktif</item>
+    </string-array>
+</resources>
