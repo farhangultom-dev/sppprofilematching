@@ -43,6 +43,9 @@
             android:name=".ui.OnboardingActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.admin.siswa.EditSiswaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.SplashScreenActivity"
             android:exported="true">
             <intent-filter>

@@ -5,6 +5,180 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.admin.siswa.DetailSiswaActivity">
+
+    <ImageView
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_header_detail_siswa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:background="#00FFFFFF"
+        android:elevation="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="65dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="30dp"
+        android:background="#00FFFFFF"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_edit"
+        android:layout_width="65dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="28dp"
+        android:background="#00FFFFFF"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_photo_siswa"
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="100dp"
+        android:src="@color/black"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btn_edit_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/btn_edit_photo"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_photo_siswa"
+        app:layout_constraintEnd_toEndOf="@+id/iv_photo_siswa" />
+
+    <TextView
+        android:id="@+id/tv_nama_siswa"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="27dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="Nama Siswa"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_photo_siswa"
+        app:layout_constraintTop_toTopOf="@+id/iv_photo_siswa"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tv_kelas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="Nama Siswa"
+        android:textColor="#B3333333"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_photo_siswa"
+        app:layout_constraintEnd_toEndOf="@+id/tv_nama_siswa"
+        app:layout_constraintStart_toEndOf="@+id/iv_photo_siswa"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_data_diri"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/btn_tab_active"
+        android:fontFamily="@font/inter"
+        android:text="Data Diri"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@id/btn_kelas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_photo_siswa" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_kelas"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/btn_tab_inactive"
+        android:fontFamily="@font/inter"
+        android:text="Kelas"
+        android:textAllCaps="false"
+        android:textColor="#54333333"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@id/btn_spp"
+        app:layout_constraintStart_toEndOf="@+id/btn_data_diri"
+        app:layout_constraintTop_toBottomOf="@+id/iv_photo_siswa" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_spp"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/btn_tab_inactive"
+        android:fontFamily="@font/inter"
+        android:text="SPP"
+        android:textAllCaps="false"
+        android:textColor="#54333333"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_kelas"
+        app:layout_constraintTop_toBottomOf="@+id/iv_photo_siswa" />
+
+    <include
+        android:id="@+id/siswa_body"
+        layout="@layout/detail_siswa_body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_data_diri" />
+
+    <include
+        android:id="@+id/kelas_body"
+        layout="@layout/kelas_body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_data_diri" />
+
+    <include
+        android:id="@+id/spp_body"
+        layout="@layout/spp_body"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_data_diri" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

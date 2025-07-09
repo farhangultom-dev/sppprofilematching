@@ -57,6 +57,7 @@ class MasterSiswaActivity : AppCompatActivity() {
             adapter = SiswaAdapter(this@MasterSiswaActivity, mutableListOf(), object : SiswaAdapter.OnItemClickListener {
                 override fun onItemClick(item: Siswa) {
                     val intent = Intent(this@MasterSiswaActivity, DetailSiswaActivity::class.java)
+                    intent.putExtra("data_siswa", Gson().toJson(item))
                     startActivity(intent)
                 }
 

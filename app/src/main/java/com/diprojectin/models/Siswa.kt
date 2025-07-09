@@ -68,5 +68,17 @@ data class Siswa(
 	val nomorTelpon: String? = null,
 
 	@field:SerializedName("username")
-	val username: String? = null
+	val username: String? = null,
+
+	@field:SerializedName("pendapatan_orang_tua")
+	val pendapatanOrangTua: String? = null,
+
+	@field:SerializedName("prestasi_akademik")
+	val prestasiAkademik: String? = null,
+
+	@field:SerializedName("jumlah_tanggungan_orang_tua")
+	val jumlahTanggunganOrangTua: String? = null,
+
+	@field:SerializedName("keterlibatan_dalam_ekskul")
+	val keterlibatanDalamEkskul: String? = null
 )

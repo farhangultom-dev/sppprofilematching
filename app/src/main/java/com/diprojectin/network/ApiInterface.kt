@@ -6,6 +6,8 @@ import com.diprojectin.network.responses.JurusanResponse
 import com.diprojectin.network.responses.KelasResponse
 import com.diprojectin.network.responses.LoginResponse
 import com.diprojectin.network.responses.SiswaResponse
+import com.diprojectin.network.responses.UploadFileResponse
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -30,6 +32,12 @@ interface ApiInterface {
     @FormUrlEncoded
     @POST("delete-kelas")
     fun deleteKelas(
+        @Field("id") id: String
+    ): Call<GenericResponse>
+
+    @FormUrlEncoded
+    @POST("delete-siswa")
+    fun deleteSiswa(
         @Field("id") id: String
     ): Call<GenericResponse>
 
@@ -67,5 +75,43 @@ interface ApiInterface {
         @Field("keterlibatan_dalam_ekskul") ekskul: String,
         @Field("kelas_id") kelasId: String,
         @Field("jurusan_id") jurusanId: String
+    ): Call<GenericResponse>
+
+    @FormUrlEncoded
+    @POST("edit-siswa")
+    fun editSiswa(
+        @Field("id") id: String,
+        @Field("username") username: String,
+        @Field("nisn") nisn: String,
+        @Field("nama") nama: String,
+        @Field("jenis_kelamin") jenisKelamin: String,
+        @Field("tempat_lahir") tempatLahir: String,
+        @Field("tanggal_lahir") tanggalLahir: String,
+        @Field("alamat") alamat: String,
+        @Field("nomor_telpon") nomorTelpon: String,
+        @Field("tahun_ajaran") tahunAjaran: String,
+        @Field("status_siswa") statusSiswa: String,
+        @Field("tahun_masuk") tahunMasuk: String,
+        @Field("tahun_keluar") tahunKeluar: String,
+        @Field("pendapatan_orang_tua") pendapatanOrtu: String,
+        @Field("prestasi_akademik") prestasiAkademik: String,
+        @Field("jumlah_tanggungan_orang_tua") tanggunganOrtu: String,
+        @Field("keterlibatan_dalam_ekskul") ekskul: String,
+        @Field("kelas_id") kelasId: String,
+        @Field("jurusan_id") jurusanId: String
+    ): Call<GenericResponse>
+
+    @Multipart
+    @POST("upload")
+    fun uploadFilw(
+        @Part image: MultipartBody.Part
+    ): Call<UploadFileResponse>
+
+    @FormUrlEncoded
+
+    @POST("update_photo")
+    fun updatePhotoProfile(
+        @Field("id") id: String,
+        @Field("photo_url") photoUrl: String
     ): Call<GenericResponse>
 }
