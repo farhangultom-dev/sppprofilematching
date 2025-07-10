@@ -3,6 +3,7 @@ package com.diprojectin.network
 import com.diprojectin.models.Kelas
 import com.diprojectin.network.responses.GenericResponse
 import com.diprojectin.network.responses.JurusanResponse
+import com.diprojectin.network.responses.KelasByUserResponse
 import com.diprojectin.network.responses.KelasResponse
 import com.diprojectin.network.responses.LoginResponse
 import com.diprojectin.network.responses.SiswaResponse
@@ -108,10 +109,15 @@ interface ApiInterface {
     ): Call<UploadFileResponse>
 
     @FormUrlEncoded
-
     @POST("update_photo")
     fun updatePhotoProfile(
         @Field("id") id: String,
         @Field("photo_url") photoUrl: String
     ): Call<GenericResponse>
+
+    @FormUrlEncoded
+    @POST("get-kelas-by-user")
+    fun getKelasByUSer(
+        @Field("user_detail_id") userDetailId: String,
+        ): Call<KelasByUserResponse>
 }

@@ -16,16 +16,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toFile
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.diprojectin.models.Kelas
+import com.diprojectin.models.KelasByUser
 import com.diprojectin.models.Siswa
 import com.diprojectin.models.User
 import com.diprojectin.network.ApiClient
 import com.diprojectin.network.ApiInterface
 import com.diprojectin.network.responses.GenericResponse
+import com.diprojectin.network.responses.KelasByUserResponse
 import com.diprojectin.network.responses.UploadFileResponse
 import com.diprojectin.sppprofilematching.R
 import com.diprojectin.sppprofilematching.databinding.ActivityDetailSiswaBinding
+import com.diprojectin.sppprofilematching.ui.adapters.KelasByUserAdapter
 import com.diprojectin.sppprofilematching.utils.DialogLoading
 import com.diprojectin.sppprofilematching.utils.DialogUtils
 import com.diprojectin.sppprofilematching.utils.SharedPrefManager
@@ -44,6 +48,8 @@ import java.io.File
 class DetailSiswaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailSiswaBinding
     private lateinit var user: Siswa
+    private lateinit var adapterKelas: KelasByUserAdapter
+    private var kelasByUsers: List<KelasByUser>? = null
     private lateinit var loadingDialog: Dialog
     private lateinit var dialogConfirm: Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,6 +107,10 @@ class DetailSiswaActivity : AppCompatActivity() {
             btnKelas.background = getDrawable(R.drawable.btn_tab_active)
             btnKelas.setTextColor(getColor(R.color.white))
             kelasBody.mainKelasBody.visibility = View.VISIBLE
+
+            if (kelasByUsers.isNullOrEmpty()){
+                getKelasByUser()
+            }
         }
 
         btnSpp.setOnClickListener {
@@ -275,4 +285,45 @@ class DetailSiswaActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun getKelasByUser() {
+        loadingDialog = DialogLoading(this@DetailSiswaActivity,
+            "Mohon tunggu, sedang mendapatkan data kelas",false).build()
+
+        loadingDialog.show()
+        val apiClient = ApiClient.client(this@DetailSiswaActivity)?.create(ApiInterface::class.java)
+        val call = apiClient?.getKelasByUSer(user.usersDetailId!!)
+        call?.enqueue(object : Callback<KelasByUserResponse> {
+            override fun onResponse(call: Call<KelasByUserResponse>, response: Response<KelasByUserResponse>) {
+                loadingDialog.dismiss()
+                if (response.isSuccessful && response.body()?.success == true) {
+                    kelasByUsers = response.body()?.data!!
+                    initRecylerview()
+                } else {
+                    Log.e("Upload", "Failed: ${response.body()?.message}")
+                }
+            }
+
+            override fun onFailure(call: Call<KelasByUserResponse>, t: Throwable) {
+                loadingDialog.dismiss()
+            }
+        })
+    }
+
+    private fun initRecylerview()= with(binding) {
+        adapterKelas = KelasByUserAdapter(this@DetailSiswaActivity, arrayListOf(),object : KelasByUserAdapter.OnItemClickListener{
+            override fun onItemClick(item: KelasByUser) {}
+
+        })
+
+        with(kelasBody){
+            recyclerView.adapter = adapterKelas
+            recyclerView.layoutManager = LinearLayoutManager(this@DetailSiswaActivity)
+            recyclerView.setHasFixedSize(true)
+
+            adapterKelas.setList(kelasByUsers!!)
+        }
+    }
+
+    // TODO buat list menampilkan spp angsuran
 }

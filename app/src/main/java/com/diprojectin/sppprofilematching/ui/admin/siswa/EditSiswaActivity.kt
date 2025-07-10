@@ -112,6 +112,10 @@ class EditSiswaActivity : AppCompatActivity() {
             }
 
             with(pengisianDataSiswa){
+                textView9.visibility = View.GONE
+                etPassword.visibility = View.GONE
+                textView13.visibility = View.GONE
+
                 etNisn.setText(nisn)
                 etNisn.addTextChangedListener(object : TextWatcher{
                     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
