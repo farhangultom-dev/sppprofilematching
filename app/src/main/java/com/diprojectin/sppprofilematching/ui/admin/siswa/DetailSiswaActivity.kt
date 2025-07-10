@@ -310,7 +310,7 @@ class DetailSiswaActivity : AppCompatActivity() {
         })
     }
 
-    private fun initRecylerview()= with(binding) {
+    private fun initRecylerview() = with(binding) {
         adapterKelas = KelasByUserAdapter(this@DetailSiswaActivity, arrayListOf(),object : KelasByUserAdapter.OnItemClickListener{
             override fun onItemClick(item: KelasByUser) {}
 
@@ -325,5 +325,5 @@ class DetailSiswaActivity : AppCompatActivity() {
         }
     }
 
-    // TODO buat list menampilkan spp angsuran
+    //TODO jangan lupa buat list spp
 }

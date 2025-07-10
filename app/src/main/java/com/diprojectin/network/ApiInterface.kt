@@ -27,12 +27,31 @@ interface ApiInterface {
         @Field("nama_kelas") namaKelas: String
     ): Call<GenericResponse>
 
+    @FormUrlEncoded
+    @POST("add-jurusan")
+    fun addJurusan(
+        @Field("nama_jurusan") namaJurusan: String
+    ): Call<GenericResponse>
+
+    @FormUrlEncoded
+    @POST("edit-jurusan")
+    fun editJurusan(
+        @Field("id") id: String,
+        @Field("nama_jurusan") namaJurusan: String
+    ): Call<GenericResponse>
+
     @POST("edit-kelas")
     fun editKelas(@Body kelasList: List<Kelas>): Call<GenericResponse>
 
     @FormUrlEncoded
     @POST("delete-kelas")
     fun deleteKelas(
+        @Field("id") id: String
+    ): Call<GenericResponse>
+
+    @FormUrlEncoded
+    @POST("delete-jurusan")
+    fun deleteJurusan(
         @Field("id") id: String
     ): Call<GenericResponse>
 

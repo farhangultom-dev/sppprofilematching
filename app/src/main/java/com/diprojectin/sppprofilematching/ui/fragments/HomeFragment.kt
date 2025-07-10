@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.diprojectin.sppprofilematching.databinding.FragmentHomeBinding
+import com.diprojectin.sppprofilematching.ui.admin.jurusan.MasterJurusanActivity
 import com.diprojectin.sppprofilematching.ui.admin.kelas.MasterKelasActivity
 import com.diprojectin.sppprofilematching.ui.admin.siswa.MasterSiswaActivity
 import com.diprojectin.sppprofilematching.utils.SharedPrefManager
@@ -33,6 +35,10 @@ class HomeFragment : Fragment() {
 
     private fun initView() {
         with(binding){
+            Glide.with(requireActivity())
+                .load(prefManager.getUser()?.photoProfile)
+                .into(circleImageView)
+
             tvName.text = prefManager.getUser()?.nama
             btnMasterSiswa.setOnClickListener {
                 val intent = Intent(requireActivity(), MasterSiswaActivity::class.java)
@@ -41,6 +47,11 @@ class HomeFragment : Fragment() {
 
             btnMasterKelas.setOnClickListener {
                 val intent = Intent(requireActivity(), MasterKelasActivity::class.java)
+                startActivity(intent)
+            }
+
+            btnMasterJurusan.setOnClickListener {
+                val intent = Intent(requireActivity(), MasterJurusanActivity::class.java)
                 startActivity(intent)
             }
         }
