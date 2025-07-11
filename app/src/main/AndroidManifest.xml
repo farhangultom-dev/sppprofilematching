@@ -15,6 +15,18 @@
         android:theme="@style/Theme.Sppprofilematching"
         tools:targetApi="31">
         <activity
+            android:name=".ui.admin.spp.EditSppActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.spp.DetailSppActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.spp.AddSppActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.spp.MasterSppActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.admin.jurusan.DetailJurusanActivity"
             android:exported="false" />
         <activity

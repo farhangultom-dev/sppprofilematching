@@ -7,6 +7,7 @@ import com.diprojectin.network.responses.KelasByUserResponse
 import com.diprojectin.network.responses.KelasResponse
 import com.diprojectin.network.responses.LoginResponse
 import com.diprojectin.network.responses.SiswaResponse
+import com.diprojectin.network.responses.SppResponse
 import com.diprojectin.network.responses.UploadFileResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -25,6 +26,21 @@ interface ApiInterface {
     fun addKelas(
         @Field("grade") grade: String,
         @Field("nama_kelas") namaKelas: String
+    ): Call<GenericResponse>
+
+    @FormUrlEncoded
+    @POST("add-spp")
+    fun addSpp(
+        @Field("nama") nama: String,
+        @Field("nilai_spp") nilaiSpp: String
+    ): Call<GenericResponse>
+
+    @FormUrlEncoded
+    @POST("edit-spp")
+    fun updateSpp(
+        @Field("id") id: String,
+        @Field("nama") nama: String,
+        @Field("nilai_spp") nilaiSpp: String
     ): Call<GenericResponse>
 
     @FormUrlEncoded
@@ -56,6 +72,12 @@ interface ApiInterface {
     ): Call<GenericResponse>
 
     @FormUrlEncoded
+    @POST("delete-spp")
+    fun deleteSpp(
+        @Field("id") id: String
+    ): Call<GenericResponse>
+
+    @FormUrlEncoded
     @POST("delete-siswa")
     fun deleteSiswa(
         @Field("id") id: String
@@ -66,6 +88,9 @@ interface ApiInterface {
 
     @GET("get-dashboard-master-siswa")
     fun getSiswa(): Call<SiswaResponse>
+
+    @GET("get-spp")
+    fun getSpp(): Call<SppResponse>
 
     @GET("get-kelas")
     fun getJustKelas(): Call<KelasResponse>

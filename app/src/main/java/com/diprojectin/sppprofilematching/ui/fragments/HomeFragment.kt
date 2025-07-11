@@ -11,6 +11,7 @@ import com.diprojectin.sppprofilematching.databinding.FragmentHomeBinding
 import com.diprojectin.sppprofilematching.ui.admin.jurusan.MasterJurusanActivity
 import com.diprojectin.sppprofilematching.ui.admin.kelas.MasterKelasActivity
 import com.diprojectin.sppprofilematching.ui.admin.siswa.MasterSiswaActivity
+import com.diprojectin.sppprofilematching.ui.admin.spp.MasterSppActivity
 import com.diprojectin.sppprofilematching.utils.SharedPrefManager
 
 class HomeFragment : Fragment() {
@@ -52,6 +53,11 @@ class HomeFragment : Fragment() {
 
             btnMasterJurusan.setOnClickListener {
                 val intent = Intent(requireActivity(), MasterJurusanActivity::class.java)
+                startActivity(intent)
+            }
+
+            btnMasterSpp.setOnClickListener {
+                val intent = Intent(requireActivity(), MasterSppActivity::class.java)
                 startActivity(intent)
             }
         }
