@@ -11,17 +11,14 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toFile
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.diprojectin.models.Kelas
 import com.diprojectin.models.KelasByUser
 import com.diprojectin.models.Siswa
-import com.diprojectin.models.User
 import com.diprojectin.network.ApiClient
 import com.diprojectin.network.ApiInterface
 import com.diprojectin.network.responses.GenericResponse
@@ -32,18 +29,14 @@ import com.diprojectin.sppprofilematching.databinding.ActivityDetailSiswaBinding
 import com.diprojectin.sppprofilematching.ui.adapters.KelasByUserAdapter
 import com.diprojectin.sppprofilematching.utils.DialogLoading
 import com.diprojectin.sppprofilematching.utils.DialogUtils
-import com.diprojectin.sppprofilematching.utils.SharedPrefManager
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.gson.Gson
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
 
 class DetailSiswaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailSiswaBinding
@@ -237,9 +230,10 @@ class DetailSiswaActivity : AppCompatActivity() {
             val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
             val body = MultipartBody.Part.createFormData("image", file.name, requestFile)
             val apiClient = ApiClient.client(this@DetailSiswaActivity)?.create(ApiInterface::class.java)
-            val call = apiClient?.uploadFilw(body)
+            val call = apiClient?.uploadFile(body)
             call?.enqueue(object : Callback<UploadFileResponse> {
                 override fun onResponse(call: Call<UploadFileResponse>, response: Response<UploadFileResponse>) {
+                    loadingDialog.dismiss()
                     if (response.isSuccessful && response.body()?.success == true) {
                         val imageUrl = response.body()?.url.toString()
                         

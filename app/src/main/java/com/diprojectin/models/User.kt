@@ -53,5 +53,5 @@ data class User(
 	val nomorTelpon: String? = null,
 
 	@field:SerializedName("photo_profile_path")
-	val photoProfile: String? = "",
+	var photoProfile: String? = "",
 )

@@ -6,6 +6,7 @@ import com.diprojectin.network.responses.JurusanResponse
 import com.diprojectin.network.responses.KelasByUserResponse
 import com.diprojectin.network.responses.KelasResponse
 import com.diprojectin.network.responses.LoginResponse
+import com.diprojectin.network.responses.NotificationResponse
 import com.diprojectin.network.responses.SiswaResponse
 import com.diprojectin.network.responses.SppResponse
 import com.diprojectin.network.responses.UploadFileResponse
@@ -56,6 +57,14 @@ interface ApiInterface {
         @Field("nama_jurusan") namaJurusan: String
     ): Call<GenericResponse>
 
+    @FormUrlEncoded
+    @POST("add-article")
+    fun addArticle(
+        @Field("title") title: String,
+        @Field("deskripsi") deskripsi: String,
+        @Field("image_path") imagePath: String
+    ): Call<GenericResponse>
+
     @POST("edit-kelas")
     fun editKelas(@Body kelasList: List<Kelas>): Call<GenericResponse>
 
@@ -91,6 +100,9 @@ interface ApiInterface {
 
     @GET("get-spp")
     fun getSpp(): Call<SppResponse>
+
+    @GET("get-article")
+    fun getNotification(): Call<NotificationResponse>
 
     @GET("get-kelas")
     fun getJustKelas(): Call<KelasResponse>
@@ -148,7 +160,7 @@ interface ApiInterface {
 
     @Multipart
     @POST("upload")
-    fun uploadFilw(
+    fun uploadFile(
         @Part image: MultipartBody.Part
     ): Call<UploadFileResponse>
 

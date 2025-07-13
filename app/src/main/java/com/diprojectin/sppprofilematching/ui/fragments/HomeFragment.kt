@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.diprojectin.sppprofilematching.databinding.FragmentHomeBinding
+import com.diprojectin.sppprofilematching.ui.admin.artikel.MasterArtikelActivity
 import com.diprojectin.sppprofilematching.ui.admin.jurusan.MasterJurusanActivity
 import com.diprojectin.sppprofilematching.ui.admin.kelas.MasterKelasActivity
+import com.diprojectin.sppprofilematching.ui.admin.notification.NotificationActivity
 import com.diprojectin.sppprofilematching.ui.admin.siswa.MasterSiswaActivity
 import com.diprojectin.sppprofilematching.ui.admin.spp.MasterSppActivity
 import com.diprojectin.sppprofilematching.utils.SharedPrefManager
@@ -58,6 +60,16 @@ class HomeFragment : Fragment() {
 
             btnMasterSpp.setOnClickListener {
                 val intent = Intent(requireActivity(), MasterSppActivity::class.java)
+                startActivity(intent)
+            }
+
+            btnMasterArticle.setOnClickListener {
+                val intent = Intent(requireActivity(), MasterArtikelActivity::class.java)
+                startActivity(intent)
+            }
+
+            cvNotif.setOnClickListener {
+                val intent = Intent(requireActivity(), NotificationActivity::class.java)
                 startActivity(intent)
             }
         }
