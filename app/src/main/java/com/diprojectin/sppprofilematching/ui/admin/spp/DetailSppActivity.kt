@@ -79,7 +79,7 @@ class DetailSppActivity : AppCompatActivity() {
 
             btnSimpan.setOnClickListener {
                 dialogConfirm.dismiss()
-                deleteJurusan()
+                deleteSpp()
             }
 
             btnCancel.setOnClickListener {
@@ -100,7 +100,7 @@ class DetailSppActivity : AppCompatActivity() {
 
     }
 
-    private fun deleteJurusan() {
+    private fun deleteSpp() {
         loadingDialog = DialogLoading(this@DetailSppActivity,
             "Mohon tunggu, sedang menghapus data spp",false).build()
 
