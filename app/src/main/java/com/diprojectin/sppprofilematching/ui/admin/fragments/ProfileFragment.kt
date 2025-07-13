@@ -1,4 +1,4 @@
-package com.diprojectin.sppprofilematching.ui.fragments
+package com.diprojectin.sppprofilematching.ui.admin.fragments
 
 import android.app.Activity
 import android.app.Dialog

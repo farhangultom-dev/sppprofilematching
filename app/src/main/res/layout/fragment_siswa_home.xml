@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.admin.fragments.SppFragment">
+    tools:context=".ui.siswa.fragments.SiswaHomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="spp" />
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

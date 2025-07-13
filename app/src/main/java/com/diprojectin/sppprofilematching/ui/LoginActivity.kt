@@ -13,6 +13,8 @@ import com.diprojectin.network.ApiInterface
 import com.diprojectin.network.responses.LoginResponse
 import com.diprojectin.sppprofilematching.R
 import com.diprojectin.sppprofilematching.databinding.ActivityLoginBinding
+import com.diprojectin.sppprofilematching.ui.admin.HomeActivity
+import com.diprojectin.sppprofilematching.ui.siswa.SiswaHomeActivity
 import com.diprojectin.sppprofilematching.utils.DialogLoading
 import com.diprojectin.sppprofilematching.utils.SharedPrefManager
 import com.google.android.material.snackbar.Snackbar
@@ -96,7 +98,7 @@ class LoginActivity : AppCompatActivity() {
                             return
                         }
 
-                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                        val intent = Intent(this@LoginActivity, SiswaHomeActivity::class.java)
                         startActivity(intent)
                         finish()
                         return

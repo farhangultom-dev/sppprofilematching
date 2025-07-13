@@ -6,6 +6,8 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.diprojectin.sppprofilematching.R
+import com.diprojectin.sppprofilematching.ui.admin.HomeActivity
+import com.diprojectin.sppprofilematching.ui.siswa.SiswaHomeActivity
 import com.diprojectin.sppprofilematching.utils.SharedPrefManager
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -28,7 +30,7 @@ class SplashScreenActivity : AppCompatActivity() {
                         startActivity(Intent(this@SplashScreenActivity, HomeActivity::class.java))
                         finish()
                     }else{
-                        startActivity(Intent(this@SplashScreenActivity, HomeActivity::class.java))
+                        startActivity(Intent(this@SplashScreenActivity, SiswaHomeActivity::class.java))
                         finish()
                     }
                 }

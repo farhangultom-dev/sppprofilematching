@@ -6,10 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.admin.HomeActivity">
-
+    tools:context=".ui.siswa.SiswaHomeActivity">
     <FrameLayout
-        android:id="@+id/fragment_container"
+        android:id="@+id/fragmen_container_siswa"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
@@ -71,7 +70,7 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/ln_profile"
+                app:layout_constraintEnd_toStartOf="@id/ln_riwayat"
                 app:layout_constraintStart_toEndOf="@+id/ln_dashboard"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -93,6 +92,36 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ln_riwayat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="2dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ln_profile"
+                app:layout_constraintStart_toEndOf="@+id/ln_spp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iv_riwayat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/li_clock" />
+
+                <TextView
+                    android:id="@+id/tv_riwayat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Riwayat"
+                    android:textColor="#484C52"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/ln_profile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -102,7 +131,7 @@
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ln_spp"
+                app:layout_constraintStart_toEndOf="@+id/ln_riwayat"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
@@ -123,5 +152,4 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

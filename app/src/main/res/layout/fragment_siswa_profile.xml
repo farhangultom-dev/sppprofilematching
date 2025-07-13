@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
-    tools:context=".ui.admin.fragments.ProfileFragment">
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/header_profile_bg"
+        android:background="@drawable/bg_profile_siswa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/iv_photo"
+        android:id="@+id/iv_photo_siswa"
         android:layout_width="98dp"
         android:layout_height="98dp"
         android:layout_marginStart="27dp"
@@ -33,11 +33,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/btn_edit_photo"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_photo"
-        app:layout_constraintEnd_toEndOf="@+id/iv_photo" />
+        app:layout_constraintBottom_toBottomOf="@+id/iv_photo_siswa"
+        app:layout_constraintEnd_toEndOf="@+id/iv_photo_siswa" />
 
     <TextView
-        android:id="@+id/tv_nama"
+        android:id="@+id/tv_nama_siswa"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -49,12 +49,12 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_photo"
-        app:layout_constraintTop_toTopOf="@+id/iv_photo"
+        app:layout_constraintStart_toEndOf="@+id/iv_photo_siswa"
+        app:layout_constraintTop_toTopOf="@+id/iv_photo_siswa"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/tv_jabatan"
+        android:id="@+id/tv_kelas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
@@ -63,19 +63,19 @@
         android:text="Nama Siswa"
         android:textColor="#B3333333"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_photo"
-        app:layout_constraintEnd_toEndOf="@+id/tv_nama"
-        app:layout_constraintStart_toEndOf="@+id/iv_photo"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_photo_siswa"
+        app:layout_constraintEnd_toEndOf="@+id/tv_nama_siswa"
+        app:layout_constraintStart_toEndOf="@+id/iv_photo_siswa"
         app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <include
-        android:id="@+id/admin_body"
-        layout="@layout/detail_admin_body"
+        android:id="@+id/siswa_body"
+        layout="@layout/detail_siswa_body_profile"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_photo" />
+        app:layout_constraintTop_toBottomOf="@id/btn_edit_photo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

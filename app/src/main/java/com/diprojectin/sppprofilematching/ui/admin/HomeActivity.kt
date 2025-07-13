@@ -1,20 +1,17 @@
-package com.diprojectin.sppprofilematching.ui
+package com.diprojectin.sppprofilematching.ui.admin
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.diprojectin.sppprofilematching.R
 import com.diprojectin.sppprofilematching.databinding.ActivityHomeBinding
-import com.diprojectin.sppprofilematching.ui.fragments.HomeFragment
-import com.diprojectin.sppprofilematching.ui.fragments.ProfileFragment
-import com.diprojectin.sppprofilematching.ui.fragments.SppFragment
-import com.diprojectin.sppprofilematching.utils.SharedPrefManager
+import com.diprojectin.sppprofilematching.ui.admin.fragments.HomeFragment
+import com.diprojectin.sppprofilematching.ui.admin.fragments.ProfileFragment
+import com.diprojectin.sppprofilematching.ui.admin.fragments.SppFragment
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding

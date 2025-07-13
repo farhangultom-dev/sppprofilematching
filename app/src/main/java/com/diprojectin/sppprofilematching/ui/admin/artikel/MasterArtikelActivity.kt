@@ -19,7 +19,7 @@ import com.diprojectin.network.responses.GenericResponse
 import com.diprojectin.network.responses.UploadFileResponse
 import com.diprojectin.sppprofilematching.R
 import com.diprojectin.sppprofilematching.databinding.ActivityMasterArtikelBinding
-import com.diprojectin.sppprofilematching.ui.HomeActivity
+import com.diprojectin.sppprofilematching.ui.admin.HomeActivity
 import com.diprojectin.sppprofilematching.utils.DialogLoading
 import com.diprojectin.sppprofilematching.utils.DialogUtils
 import com.github.dhaval2404.imagepicker.ImagePicker

@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Sppprofilematching"
         tools:targetApi="31">
         <activity
+            android:name=".ui.siswa.SiswaHomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.admin.notification.DetailNotifiactionActivity"
             android:exported="false" />
         <activity
@@ -65,7 +68,7 @@
             android:name=".ui.admin.siswa.MasterSiswaActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.HomeActivity"
+            android:name=".ui.admin.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.LoginActivity"
