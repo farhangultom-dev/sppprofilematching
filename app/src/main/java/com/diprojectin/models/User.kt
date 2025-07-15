@@ -54,4 +54,16 @@ data class User(
 
 	@field:SerializedName("photo_profile_path")
 	var photoProfile: String? = "",
+
+	@field:SerializedName("pendapatan_orang_tua")
+	val pendapatanOrtu: String? = null,
+
+	@field:SerializedName("prestasi_akademik")
+	val prestasiAkademik: String? = null,
+
+	@field:SerializedName("jumlah_tanggungan_orang_tua")
+	val jumlahTanggunganOrtu: String? = null,
+
+	@field:SerializedName("keterlibatan_dalam_ekskul")
+	var keterlibatanEkskul: String? = "",
 )

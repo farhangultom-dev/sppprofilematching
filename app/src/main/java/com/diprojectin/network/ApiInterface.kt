@@ -9,6 +9,7 @@ import com.diprojectin.network.responses.LoginResponse
 import com.diprojectin.network.responses.NotificationResponse
 import com.diprojectin.network.responses.SiswaResponse
 import com.diprojectin.network.responses.SppResponse
+import com.diprojectin.network.responses.TransactionLunasResponse
 import com.diprojectin.network.responses.UploadFileResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -176,4 +177,25 @@ interface ApiInterface {
     fun getKelasByUSer(
         @Field("user_detail_id") userDetailId: String,
         ): Call<KelasByUserResponse>
+
+    @FormUrlEncoded
+    @POST("create-payment")
+    fun createPaymentLunas(
+        @Field("nama_siswa") namaSiswa: String,
+        @Field("id_siswa") idSiswa: String,
+        @Field("id_kategori_spp") idKategoriSpp: String,
+        @Field("total_payment") totalPayment: String,
+        @Field("periode_bayar") periodeBayar: String,
+        ): Call<TransactionLunasResponse>
+
+    @FormUrlEncoded
+    @POST("create-angsuran")
+    fun createPaymentAngsuran(
+        @Field("nama_siswa") namaSiswa: String,
+        @Field("id_siswa") idSiswa: String,
+        @Field("id_kategori_spp") idKategoriSpp: String,
+        @Field("total_payment") totalPayment: String,
+        @Field("periode_bayar") periodeBayar: String,
+        @Field("jumlah_angsuran") jumlahAngsuran: String,
+        ): Call<GenericResponse>
 }

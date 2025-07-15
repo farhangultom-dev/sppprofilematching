@@ -5,7 +5,7 @@ import android.content.Context
 data class Kriteria(
     val nama: String,
     val jenis: JenisKriteria, // CORE atau SECONDARY
-    val nilaiMahasiswa: Int,
+    val nilai: Int,
     val nilaiStandar: Int
 )
 
@@ -37,7 +37,7 @@ class CalculatingProfileMatching(
         val secondaryScores = mutableListOf<Double>()
 
         for (kriteria in kriteriaList) {
-            val gap = kriteria.nilaiMahasiswa - kriteria.nilaiStandar
+            val gap = kriteria.nilai - kriteria.nilaiStandar
             val skor = konversiGap(gap)
 
             if (kriteria.jenis == JenisKriteria.CORE) {

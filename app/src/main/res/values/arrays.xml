@@ -33,6 +33,12 @@
         <item>&gt; 4</item>
     </string-array>
 
+    <string-array name="jumlah_angsuran">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
     <string-array name="keterlibatan_dalam_ekskul">
         <item>Tidak Aktif</item>
         <item>Kurang Aktif</item>

@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Sppprofilematching"
         tools:targetApi="31">
         <activity
+            android:name=".ui.siswa.WebViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.siswa.SiswaHomeActivity"
             android:exported="false" />
         <activity
