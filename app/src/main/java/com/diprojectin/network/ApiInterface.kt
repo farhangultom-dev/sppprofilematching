@@ -2,6 +2,7 @@ package com.diprojectin.network
 
 import com.diprojectin.models.Kelas
 import com.diprojectin.network.responses.ArtikelResponse
+import com.diprojectin.network.responses.DashboardHomeAdminResponse
 import com.diprojectin.network.responses.DashboardHomeResponse
 import com.diprojectin.network.responses.GenericResponse
 import com.diprojectin.network.responses.JurusanResponse
@@ -9,6 +10,7 @@ import com.diprojectin.network.responses.KelasByUserResponse
 import com.diprojectin.network.responses.KelasResponse
 import com.diprojectin.network.responses.LoginResponse
 import com.diprojectin.network.responses.NotificationResponse
+import com.diprojectin.network.responses.RiwayatTransactionsResponse
 import com.diprojectin.network.responses.SiswaResponse
 import com.diprojectin.network.responses.SppResponse
 import com.diprojectin.network.responses.TransactionLunasResponse
@@ -101,6 +103,15 @@ interface ApiInterface {
         @Field("id_siswa") id: String
     ): Call<DashboardHomeResponse>
 
+    @FormUrlEncoded
+    @POST("get-riwayat")
+    fun getRiwayat(
+        @Field("id_siswa") id: String
+    ): Call<RiwayatTransactionsResponse>
+
+    @GET("get-riwayat-admin")
+    fun getRiwayatAdmin(): Call<RiwayatTransactionsResponse>
+
     @GET("get-dashboard-master-kelas")
     fun getKelas(): Call<KelasResponse>
 
@@ -121,6 +132,9 @@ interface ApiInterface {
 
     @GET("get-dashboard-master-jurusan")
     fun getJurusan(): Call<JurusanResponse>
+
+    @GET("dashboard-home-admin")
+    fun getDashboardHomeAdmin(): Call<DashboardHomeAdminResponse>
 
     @FormUrlEncoded
     @POST("register-siswa")

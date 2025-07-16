@@ -55,11 +55,11 @@ class NotificationActivity : AppCompatActivity() {
     private fun setRecyclerView() = with(binding) {
        adapter = NotificationAdapter(this@NotificationActivity, arrayListOf(), object : NotificationAdapter.OnItemClickListener{
            override fun onItemClick(item: Notification) {
-               val intent = Intent(this@NotificationActivity, DetailNotifiactionActivity::class.java)
-               intent.putExtra("judul", item.title)
-               intent.putExtra("deskripsi", item.deskripsi)
-               intent.putExtra("image", item.imagePath)
-               startActivity(intent)
+//               val intent = Intent(this@NotificationActivity, DetailNotifiactionActivity::class.java)
+//               intent.putExtra("judul", item.title)
+//               intent.putExtra("deskripsi", item.deskripsi)
+//               intent.putExtra("image", item.imagePath)
+//               startActivity(intent)
            }
        })
 

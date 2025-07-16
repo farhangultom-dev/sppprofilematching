@@ -12,7 +12,7 @@ import com.diprojectin.sppprofilematching.R
 import com.diprojectin.sppprofilematching.utils.Helper.convertToIndonesianDate
 import com.diprojectin.sppprofilematching.utils.Helper.formatCurrency
 
-class RiwayatAngsuranAdapter(private var context: Context, private var models: MutableList<Angsuran>,
+class RiwayatAngsuranAdapter(private var context: Context, private var models: MutableList<Angsuran>,private var isPembayranKe: Boolean,
                              private val onItemClickListener: OnItemClickListener)
     : RecyclerView.Adapter<RiwayatAngsuranAdapter.ViewHolder>() {
 
@@ -31,6 +31,8 @@ class RiwayatAngsuranAdapter(private var context: Context, private var models: M
         var kategori: TextView = v.findViewById(R.id.lbl_kategori)
         var totalBayar: TextView = v.findViewById(R.id.tv_total_bayar)
         var tanggalTransaksi: TextView = v.findViewById(R.id.tv_tanggal_transaksi)
+        var pembayaranKe: TextView = v.findViewById(R.id.tv_pembayaran_ke)
+        var trPembayaranKe: View = v.findViewById(R.id.tr_pembayaran_ke)
 
         fun bind(item: Angsuran, onItemClickListener: OnItemClickListener) {
             itemView.setOnClickListener {
@@ -50,6 +52,13 @@ class RiwayatAngsuranAdapter(private var context: Context, private var models: M
         holder.kategori.text = model.namaKategori
         holder.totalBayar.text = model.totalPayment?.toInt().formatCurrency()
         holder.tanggalTransaksi.text = model.createdDate.convertToIndonesianDate()
+
+        if (isPembayranKe){
+            holder.trPembayaranKe.visibility = View.VISIBLE
+            holder.pembayaranKe.text = model.pembayaranKe.toString()
+        }else{
+            holder.trPembayaranKe.visibility = View.GONE
+        }
 
         holder.bind(models[position], onItemClickListener)
     }

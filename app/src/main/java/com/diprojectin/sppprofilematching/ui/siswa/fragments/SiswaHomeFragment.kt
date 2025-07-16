@@ -26,6 +26,7 @@ import com.diprojectin.network.responses.DashboardHomeResponse
 import com.diprojectin.network.responses.TransactionLunasResponse
 import com.diprojectin.sppprofilematching.R
 import com.diprojectin.sppprofilematching.databinding.FragmentSiswaHomeBinding
+import com.diprojectin.sppprofilematching.ui.admin.notification.NotificationActivity
 import com.diprojectin.sppprofilematching.ui.siswa.WebViewActivity
 import com.diprojectin.sppprofilematching.ui.siswa.adpters.RiwayatAngsuranAdapter
 import com.diprojectin.sppprofilematching.ui.siswa.adpters.RiwayatLunasAdapter
@@ -95,6 +96,11 @@ class SiswaHomeFragment : Fragment() {
 
         }
 
+        cvNotif.setOnClickListener {
+            val intent = Intent(requireActivity(), NotificationActivity::class.java)
+            startActivity(intent)
+        }
+
         initArtikel()
         getDashboard()
     }
@@ -162,7 +168,7 @@ class SiswaHomeFragment : Fragment() {
     }
 
     private fun setRecyclerViewAngsuran(riwayatAngsuran: List<Angsuran>?) = with(binding.bodyAngsuran) {
-        adapterAngsuran = RiwayatAngsuranAdapter(requireActivity(), arrayListOf(), object: RiwayatAngsuranAdapter.OnItemClickListener{
+        adapterAngsuran = RiwayatAngsuranAdapter(requireActivity(), arrayListOf(),false, object: RiwayatAngsuranAdapter.OnItemClickListener{
             override fun onItemClick(item: Angsuran) {
 
             }

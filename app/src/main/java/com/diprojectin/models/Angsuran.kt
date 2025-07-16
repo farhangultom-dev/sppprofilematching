@@ -39,4 +39,16 @@ data class Angsuran(
 
 	@field:SerializedName("nama_kategori")
 	val namaKategori: String? = null,
+
+	@field:SerializedName("nisn")
+	val nisn: String? = null,
+
+	@field:SerializedName("grade")
+	val grade: String? = null,
+
+	@field:SerializedName("nama_kelas")
+	val namaKelas: String? = null,
+
+	@field:SerializedName("jurusan")
+	val jurusan: String? = null,
 )

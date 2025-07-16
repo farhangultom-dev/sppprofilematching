@@ -17,16 +17,19 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.diprojectin.models.Angsuran
 import com.diprojectin.models.KelasByUser
 import com.diprojectin.models.Siswa
 import com.diprojectin.network.ApiClient
 import com.diprojectin.network.ApiInterface
 import com.diprojectin.network.responses.GenericResponse
 import com.diprojectin.network.responses.KelasByUserResponse
+import com.diprojectin.network.responses.RiwayatTransactionsResponse
 import com.diprojectin.network.responses.UploadFileResponse
 import com.diprojectin.sppprofilematching.R
 import com.diprojectin.sppprofilematching.databinding.ActivityDetailSiswaBinding
 import com.diprojectin.sppprofilematching.ui.adapters.KelasByUserAdapter
+import com.diprojectin.sppprofilematching.ui.siswa.adpters.RiwayatAngsuranAdapter
 import com.diprojectin.sppprofilematching.utils.DialogLoading
 import com.diprojectin.sppprofilematching.utils.DialogUtils
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -42,6 +45,7 @@ class DetailSiswaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailSiswaBinding
     private lateinit var user: Siswa
     private lateinit var adapterKelas: KelasByUserAdapter
+    private lateinit var adapterAngsuran: RiwayatAngsuranAdapter
     private var kelasByUsers: List<KelasByUser>? = null
     private lateinit var loadingDialog: Dialog
     private lateinit var dialogConfirm: Dialog
@@ -67,6 +71,8 @@ class DetailSiswaActivity : AppCompatActivity() {
     private fun initView() = with(binding) {
         tvNamaSiswa.text = user.nama
         tvKelas.text = "${user.kelas}-${user.namaKelas} ${user.jurusan}"
+
+        btnBack.setOnClickListener { onBackPressed() }
 
         Glide.with(this@DetailSiswaActivity)
             .load(user.photoProfile)
@@ -113,6 +119,7 @@ class DetailSiswaActivity : AppCompatActivity() {
             btnSpp.background = getDrawable(R.drawable.btn_tab_active)
             btnSpp.setTextColor(getColor(R.color.white))
             sppBody.mainSppBody.visibility = View.VISIBLE
+            getRiwyatPembayaranSiswa()
         }
 
         btnDelete.setOnClickListener {
@@ -319,5 +326,56 @@ class DetailSiswaActivity : AppCompatActivity() {
         }
     }
 
-    //TODO jangan lupa buat list spp
+    private fun getRiwyatPembayaranSiswa(){
+        loadingDialog = DialogLoading(this@DetailSiswaActivity,
+            "Mohon tunggu, sedang mendapatkan data",false).build()
+
+        loadingDialog.show()
+        val apiClient = ApiClient.client(this@DetailSiswaActivity)?.create(ApiInterface::class.java)
+        val call = apiClient?.getRiwayat(user.usersDetailId!!)
+        call?.enqueue(object: Callback<RiwayatTransactionsResponse> {
+            override fun onResponse(call: Call<RiwayatTransactionsResponse>, response: Response<RiwayatTransactionsResponse>) {
+                loadingDialog.dismiss()
+                if(!response.isSuccessful){
+                    Toast.makeText(this@DetailSiswaActivity, "Terjadi kesalahan, lakukan beberapa saat", Toast.LENGTH_SHORT).show()
+                    return
+                }
+
+                if(response.isSuccessful){
+                    if (response.body()?.success == true){
+                        setRecyclerViewAngsuran(response.body()?.riwayatAngsuran)
+                        return
+                    }
+
+                    if (response.body()?.success == false){
+                        Toast.makeText(this@DetailSiswaActivity, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        return
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<RiwayatTransactionsResponse>, t: Throwable) {
+                loadingDialog.dismiss()
+                Toast.makeText(this@DetailSiswaActivity, t.message, Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun setRecyclerViewAngsuran(riwayatAngsuran: List<Angsuran>?) = with(binding.sppBody) {
+        adapterAngsuran = RiwayatAngsuranAdapter(this@DetailSiswaActivity, arrayListOf(),true, object: RiwayatAngsuranAdapter.OnItemClickListener{
+            override fun onItemClick(item: Angsuran) {
+//                val intent = Intent(requireActivity(), DetailRiwayatActivity::class.java)
+//                intent.putExtra("model_data", "angsuran")
+//                intent.putExtra("data_riwayat", Gson().toJson(item))
+//                startActivity(intent)
+            }
+        })
+        recyclerViewAngsuran.adapter =  adapterAngsuran
+        recyclerViewAngsuran.layoutManager = LinearLayoutManager(this@DetailSiswaActivity)
+        recyclerViewAngsuran.setHasFixedSize(true)
+
+        adapterAngsuran.setList(riwayatAngsuran!!)
+
+    }
 }
