@@ -2,6 +2,9 @@ package com.diprojectin.sppprofilematching.utils
 
 import android.widget.EditText
 import java.text.DecimalFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 object Helper {
     fun Number?.formatCurrency(): String {
@@ -24,5 +27,15 @@ object Helper {
             .replace("\\s".toRegex(), "")
 
         return raw.toLongOrNull() ?: 0L
+    }
+
+    fun String?.convertToIndonesianDate(): String {
+        // 1. Parse the original string
+        val inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+        val dateTime = LocalDateTime.parse(this, inputFormatter)
+
+        // 2. Format with Indonesian locale
+        val outputFormatter = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", Locale("id", "ID"))
+        return dateTime.format(outputFormatter)
     }
 }

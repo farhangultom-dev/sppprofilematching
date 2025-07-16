@@ -1,0 +1,6 @@
+<!-- res/drawable/tab_indicator_default.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#D1D1D6"/> <!-- A light gray for unselected dots -->
+    <size android:width="8dp" android:height="8dp"/>
+</shape>

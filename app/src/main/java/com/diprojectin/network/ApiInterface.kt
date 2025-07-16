@@ -1,6 +1,8 @@
 package com.diprojectin.network
 
 import com.diprojectin.models.Kelas
+import com.diprojectin.network.responses.ArtikelResponse
+import com.diprojectin.network.responses.DashboardHomeResponse
 import com.diprojectin.network.responses.GenericResponse
 import com.diprojectin.network.responses.JurusanResponse
 import com.diprojectin.network.responses.KelasByUserResponse
@@ -93,6 +95,12 @@ interface ApiInterface {
         @Field("id") id: String
     ): Call<GenericResponse>
 
+    @FormUrlEncoded
+    @POST("get-dashboard-home-siswa")
+    fun getDashboardHomeSiswa(
+        @Field("id_siswa") id: String
+    ): Call<DashboardHomeResponse>
+
     @GET("get-dashboard-master-kelas")
     fun getKelas(): Call<KelasResponse>
 
@@ -104,6 +112,9 @@ interface ApiInterface {
 
     @GET("get-article")
     fun getNotification(): Call<NotificationResponse>
+
+    @GET("get-article")
+    fun getArticles(): Call<ArtikelResponse>
 
     @GET("get-kelas")
     fun getJustKelas(): Call<KelasResponse>
@@ -186,6 +197,7 @@ interface ApiInterface {
         @Field("id_kategori_spp") idKategoriSpp: String,
         @Field("total_payment") totalPayment: String,
         @Field("periode_bayar") periodeBayar: String,
+        @Field("order_id") orderId:String
         ): Call<TransactionLunasResponse>
 
     @FormUrlEncoded

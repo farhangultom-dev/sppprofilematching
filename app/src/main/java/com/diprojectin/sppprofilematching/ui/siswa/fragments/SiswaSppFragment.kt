@@ -194,7 +194,7 @@ class SiswaSppFragment : Fragment() {
         loadingDialog.show()
         val apiClient = ApiClient.client(requireActivity())?.create(ApiInterface::class.java)
         val call = apiClient?.createPaymentLunas(userData.nama.toString(),userData.id.toString(),
-            kategoriSppAnswer,nominalBayar,periodeBayarAnswer)
+            kategoriSppAnswer,nominalBayar,periodeBayarAnswer,"")
         call?.enqueue(object : Callback<TransactionLunasResponse> {
             override fun onResponse(call: Call<TransactionLunasResponse>, response: Response<TransactionLunasResponse>) {
                 loadingDialog.dismiss()
