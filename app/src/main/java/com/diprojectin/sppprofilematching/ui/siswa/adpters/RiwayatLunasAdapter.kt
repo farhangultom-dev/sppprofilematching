@@ -2,6 +2,7 @@ package com.diprojectin.sppprofilematching.ui.siswa.adpters
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,7 @@ class RiwayatLunasAdapter(private var context: Context, private var models: Muta
         var kategori: TextView = v.findViewById(R.id.lbl_kategori)
         var totalBayar: TextView = v.findViewById(R.id.tv_total_bayar)
         var tanggalTransaksi: TextView = v.findViewById(R.id.tv_tanggal_transaksi)
+        var status: TextView = v.findViewById(R.id.tv_status_pembayaran)
 
         fun bind(item: Lunas, onItemClickListener: OnItemClickListener) {
             itemView.setOnClickListener {
@@ -51,6 +53,18 @@ class RiwayatLunasAdapter(private var context: Context, private var models: Muta
         holder.totalBayar.text = model.totalPayment?.toInt().formatCurrency()
         holder.tanggalTransaksi.text = model.createdDate.convertToIndonesianDate()
 
+        holder.status.text = when(model.statusPayment){
+            "PENDING" -> "Menunggu Pembayaran"
+            "SUCCESS" -> "Sudah Dibayar"
+            "CANCELLED" -> "Dibatalkan"
+            else -> "Menunggu Pembayaran"
+        }
+
+        when(model.statusPayment){
+            "SUCCESS" -> holder.status.setTextColor(Color.parseColor("#38D79F"))
+            "CANCELLED" -> holder.status.setTextColor(Color.RED)
+            else -> "Menunggu Pembayaran"
+        }
         holder.bind(models[position], onItemClickListener)
     }
 

@@ -1,4 +1,4 @@
-package com.diprojectin.sppprofilematching.ui.siswa.adpters
+package com.diprojectin.sppprofilematching.ui.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -13,9 +13,9 @@ import com.diprojectin.sppprofilematching.R
 import com.diprojectin.sppprofilematching.utils.Helper.convertToIndonesianDate
 import com.diprojectin.sppprofilematching.utils.Helper.formatCurrency
 
-class RiwayatAngsuranAdapter(private var context: Context, private var models: MutableList<Angsuran>,private var isPembayranKe: Boolean,
-                             private val onItemClickListener: OnItemClickListener)
-    : RecyclerView.Adapter<RiwayatAngsuranAdapter.ViewHolder>() {
+class RiwayatAngsuran2Adapter(private var context: Context, private var models: MutableList<Angsuran>,
+                              private val onItemClickListener: OnItemClickListener)
+    : RecyclerView.Adapter<RiwayatAngsuran2Adapter.ViewHolder>() {
 
     interface OnItemClickListener {
         fun onItemClick(item: Angsuran)
@@ -29,12 +29,11 @@ class RiwayatAngsuranAdapter(private var context: Context, private var models: M
     }
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        var kategori: TextView = v.findViewById(R.id.lbl_kategori)
-        var totalBayar: TextView = v.findViewById(R.id.tv_total_bayar)
-        var tanggalTransaksi: TextView = v.findViewById(R.id.tv_tanggal_transaksi)
-        var pembayaranKe: TextView = v.findViewById(R.id.tv_pembayaran_ke)
-        var trPembayaranKe: View = v.findViewById(R.id.tr_pembayaran_ke)
-        var status: TextView = v.findViewById(R.id.tv_status_pembayaran)
+        var namaSiswa: TextView = v.findViewById(R.id.tv_nama_siswa)
+        var nisnKelas: TextView = v.findViewById(R.id.tv_nisn_kelas)
+        var jenisSpp: TextView = v.findViewById(R.id.tv_jenis_spp)
+        var nominal: TextView = v.findViewById(R.id.tv_nominal)
+        var status: TextView = v.findViewById(R.id.tv_status)
 
         fun bind(item: Angsuran, onItemClickListener: OnItemClickListener) {
             itemView.setOnClickListener {
@@ -44,24 +43,17 @@ class RiwayatAngsuranAdapter(private var context: Context, private var models: M
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.riwayat_spp, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_riwayat_spp_admin, parent, false)
         return ViewHolder(view)
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = models[position]
-        holder.kategori.text = model.namaKategori
-        holder.totalBayar.text = model.totalPayment?.toInt().formatCurrency()
-        holder.tanggalTransaksi.text = model.createdDate.convertToIndonesianDate()
-
-        if (isPembayranKe){
-            holder.trPembayaranKe.visibility = View.VISIBLE
-            holder.pembayaranKe.text = model.pembayaranKe.toString()
-        }else{
-            holder.trPembayaranKe.visibility = View.GONE
-        }
-
+        holder.namaSiswa.text = model.namaSiswa
+        holder.nisnKelas.text = "${model.nisn} • ${model.grade} ${model.jurusan} ${model.grade}"
+        holder.jenisSpp.text = model.namaKategori
+        holder.nominal.text = model.totalPayment?.toInt().formatCurrency()
         holder.status.text = when(model.statusPembayaran){
             "PENDING" -> "Menunggu Pembayaran"
             "SUCCESS" -> "Sudah Dibayar"

@@ -39,6 +39,12 @@
         <item>4</item>
     </string-array>
 
+    <string-array name="grade_kelas">
+        <item>X</item>
+        <item>XI</item>
+        <item>XII</item>
+    </string-array>
+
     <string-array name="keterlibatan_dalam_ekskul">
         <item>Tidak Aktif</item>
         <item>Kurang Aktif</item>

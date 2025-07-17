@@ -18,6 +18,8 @@ import com.diprojectin.network.ApiInterface
 import com.diprojectin.network.responses.RiwayatTransactionsResponse
 import com.diprojectin.sppprofilematching.R
 import com.diprojectin.sppprofilematching.databinding.FragmentSppBinding
+import com.diprojectin.sppprofilematching.ui.adapters.RiwayatAngsuran2Adapter
+import com.diprojectin.sppprofilematching.ui.adapters.RiwayatLunas2Adapter
 import com.diprojectin.sppprofilematching.ui.siswa.DetailRiwayatActivity
 import com.diprojectin.sppprofilematching.ui.siswa.adpters.RiwayatAngsuranAdapter
 import com.diprojectin.sppprofilematching.ui.siswa.adpters.RiwayatLunasAdapter
@@ -31,8 +33,8 @@ import retrofit2.Response
 class SppFragment : Fragment() {
     private lateinit var binding: FragmentSppBinding
     private lateinit var loadingDialog: Dialog
-    private lateinit var adapterLunas: RiwayatLunasAdapter
-    private lateinit var adapterAngsuran: RiwayatAngsuranAdapter
+    private lateinit var adapterLunas: RiwayatLunas2Adapter
+    private lateinit var adapterAngsuran: RiwayatAngsuran2Adapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -129,7 +131,7 @@ class SppFragment : Fragment() {
     }
 
     private fun setRecyclerViewAngsuran(riwayatAngsuran: List<Angsuran>?) = with(binding) {
-        adapterAngsuran = RiwayatAngsuranAdapter(requireActivity(), arrayListOf(),true, object: RiwayatAngsuranAdapter.OnItemClickListener{
+        adapterAngsuran = RiwayatAngsuran2Adapter(requireActivity(), arrayListOf(), object: RiwayatAngsuran2Adapter.OnItemClickListener{
             override fun onItemClick(item: Angsuran) {
 //                val intent = Intent(requireActivity(), DetailRiwayatActivity::class.java)
 //                intent.putExtra("model_data", "angsuran")
@@ -146,7 +148,7 @@ class SppFragment : Fragment() {
     }
 
     private fun setRecylerViewLunas(riwayatLunas: List<Lunas>?) = with(binding) {
-        adapterLunas = RiwayatLunasAdapter(requireActivity(), arrayListOf(), object: RiwayatLunasAdapter.OnItemClickListener{
+        adapterLunas = RiwayatLunas2Adapter(requireActivity(), arrayListOf(), object: RiwayatLunas2Adapter.OnItemClickListener{
             override fun onItemClick(item: Lunas) {
 //                val intent = Intent(requireActivity(), DetailRiwayatActivity::class.java)
 //                intent.putExtra("model_data", "lunas")

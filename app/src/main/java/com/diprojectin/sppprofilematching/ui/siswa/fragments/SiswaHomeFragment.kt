@@ -32,8 +32,10 @@ import com.diprojectin.sppprofilematching.ui.siswa.adpters.RiwayatAngsuranAdapte
 import com.diprojectin.sppprofilematching.ui.siswa.adpters.RiwayatLunasAdapter
 import com.diprojectin.sppprofilematching.ui.siswa.adpters.SliderAdapter
 import com.diprojectin.sppprofilematching.utils.DialogLoading
+import com.diprojectin.sppprofilematching.utils.Helper.dp
 import com.diprojectin.sppprofilematching.utils.Helper.formatCurrency
 import com.diprojectin.sppprofilematching.utils.SharedPrefManager
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import retrofit2.Call
 import retrofit2.Callback
@@ -262,8 +264,32 @@ class SiswaHomeFragment : Fragment() {
                         }
                         viewPager.setPageTransformer(compositePageTransformer)
 
+                        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                            override fun onTabSelected(tab: TabLayout.Tab?) {
+                                val dot = tab?.customView?.findViewById<View>(R.id.dot)
+                                dot?.layoutParams?.width = 32.dp // lonjong ketika aktif
+                                dot?.setBackgroundResource(R.drawable.tab_dot_active)
+                                dot?.requestLayout()
+                            }
+
+                            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                                val dot = tab?.customView?.findViewById<View>(R.id.dot)
+                                dot?.layoutParams?.width = 8.dp
+                                dot?.setBackgroundResource(R.drawable.tab_dot_inactive)
+                                dot?.requestLayout()
+                            }
+
+                            override fun onTabReselected(tab: TabLayout.Tab?) {}
+                        })
+
                         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                            tab.setCustomView(R.layout.tab_dot)
                         }.attach()
+
+                        viewPager.post {
+                            viewPager.setCurrentItem(0, false)
+                            tabLayout.getTabAt(0)?.select()
+                        }
                     }
 
                     if (response.body()?.success == false){

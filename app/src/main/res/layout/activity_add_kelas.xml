@@ -85,21 +85,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/et_nama_kelas" />
 
-            <EditText
+            <com.skydoves.powerspinner.PowerSpinnerView
                 android:id="@+id/et_kelas"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/bg_edittext"
-                android:fontFamily="@font/public_sans"
-                android:hint="Masukkan kelas"
-                android:inputType="textPersonName"
-                android:textColor="#374151"
-                android:textSize="14sp"
+                android:hint="Pilih kelas"
+                android:textColor="#333333"
                 android:textColorHint="#9CA3AF"
+                android:textSize="14sp"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView8"
-                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                app:spinner_item_array="@array/grade_kelas"
+                app:spinner_arrow_drawable="@drawable/arrow_down_dropdown"
+                app:spinner_arrow_gravity="end"
+                app:spinner_arrow_padding="8dp"
+                app:spinner_divider_color="#B3FFFFFF"
+                app:spinner_divider_show="true"
+                app:spinner_divider_size="0.4dp"
+                app:spinner_item_height="50dp"
+                app:spinner_popup_animation="dropdown"
+                app:spinner_popup_background="@color/white"
+                app:spinner_popup_elevation="14dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

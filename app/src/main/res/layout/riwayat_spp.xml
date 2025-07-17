@@ -87,6 +87,25 @@
                     android:textColor="@android:color/black" />
             </TableRow>
 
+            <TableRow android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Status Pembayaran"
+                    android:textColor="@android:color/darker_gray" />
+
+                <TextView
+                    android:id="@+id/tv_status_pembayaran"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="-"
+                    android:textAlignment="textEnd"
+                    android:textColor="#F9A825" />
+            </TableRow>
+
             <TableRow
                 android:id="@+id/tr_pembayaran_ke"
                 android:visibility="gone"

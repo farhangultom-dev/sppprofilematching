@@ -59,6 +59,7 @@ dependencies {
     implementation libs.circleimageview
     implementation libs.powerspinner
     implementation 'com.github.dhaval2404:imagepicker:2.1'
+    implementation 'com.tbuonomo:dotsindicator:4.3'
 
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit

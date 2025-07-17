@@ -13,7 +13,8 @@ import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
 object ApiClient {
-    val BASE_URL = "https://5073e1bf2ce4.ngrok-free.app/spp-profile-matching-be/"
+//    val BASE_URL = "https://5073e1bf2ce4.ngrok-free.app/spp-profile-matching-be/"
+    val BASE_URL = "https://sppprofilematching.diprojectin.com/"
 
     private var retrofit: Retrofit? = null
 

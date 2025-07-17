@@ -115,15 +115,15 @@ class HomeFragment : Fragment() {
                                 progressBarx.progress = i.persen!!
                             }
 
-                            if (i?.kelas == "Kelas XI"){
-                                tvPercentageTotalSiswaxi.text = "${i.persen}% (${i.sudahBayar}/${i.totalSiswa} Siswa)"
-                                progressBarxi.progress = i.persen!!
-                            }
-
-                            if (i?.kelas == "Kelas XII"){
-                                tvPercentageTotalSiswaxii.text = "${i.persen}% (${i.sudahBayar}/${i.totalSiswa} Siswa)"
-                                progressBarxii.progress = i.persen!!
-                            }
+//                            if (i?.kelas == "Kelas XI"){
+//                                tvPercentageTotalSiswaxi.text = "${i.persen}% (${i.sudahBayar}/${i.totalSiswa} Siswa)"
+//                                progressBarxi.progress = i.persen!!
+//                            }
+//
+//                            if (i?.kelas == "Kelas XII"){
+//                                tvPercentageTotalSiswaxii.text = "${i.persen}% (${i.sudahBayar}/${i.totalSiswa} Siswa)"
+//                                progressBarxii.progress = i.persen!!
+//                            }
                         }
                     }
 

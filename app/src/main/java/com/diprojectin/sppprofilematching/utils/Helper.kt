@@ -1,5 +1,6 @@
 package com.diprojectin.sppprofilematching.utils
 
+import android.content.res.Resources
 import android.widget.EditText
 import java.text.DecimalFormat
 import java.time.LocalDateTime
@@ -28,6 +29,8 @@ object Helper {
 
         return raw.toLongOrNull() ?: 0L
     }
+
+    val Int.dp: Int get() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
     fun String?.convertToIndonesianDate(): String {
         // 1. Parse the original string

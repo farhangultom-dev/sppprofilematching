@@ -88,15 +88,16 @@
     <!-- TabLayout to act as the dot indicator -->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        android:layout_width="8dp"
-        android:layout_height="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewPager"
-        app:tabBackground="@drawable/tab_selector"
         app:tabGravity="center"
+        app:tabMode="fixed"
+        app:tabPaddingStart="2dp"
+        app:tabPaddingEnd="2dp"
         app:tabIndicatorHeight="0dp"
         app:tabRippleColor="@null" />
 
@@ -118,7 +119,6 @@
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:fontFamily="@font/inter"
         android:text="Informasi SPP Terbaru"
         android:textColor="#2F394E"
